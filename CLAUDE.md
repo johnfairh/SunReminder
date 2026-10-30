@@ -33,6 +33,11 @@ project-file registration needed.
   `.primary`/`.secondary` to auto-adapt to white/light-gray rather than hardcoding
   foreground colors. Recomputes on launch and at midnight (`.NSCalendarDayChanged`).
 
+Nothing is persisted: the app never knows the timer's real current setting. Today's
+suggestion is computed against `TimerState.initial` (on 21:00, off 06:00, GMT), and the
+20-day forecast chains from `.initial`, feeding each day's suggestion in as the next
+day's `current`.
+
 Depends directly on the `SwiftSunriseSunset` package
 (`johnfairh/swift-sunrise-sunset`) as a package dependency on the app target.
 
@@ -57,5 +62,12 @@ instead modify `project.yml` and regenerate `SunReminder.xcodeproj` using `xcode
 
 `xcodegen generate` to update the Xcode project file `SunReminder.xcodeproj`.
 
-Build/run/test via Xcode (or `xcodebuild`) targeting the `SunReminder` scheme/app
-target in `SunReminder.xcodeproj`.
+Build from the command line (no device or signing needed):
+
+```
+xcodebuild -project SunReminder.xcodeproj -scheme SunReminder \
+  -destination 'generic/platform=iOS Simulator' build
+```
+
+There is no test target. Swift 6 language mode, iPhone-only, portrait-only (all set in
+`project.yml`).
