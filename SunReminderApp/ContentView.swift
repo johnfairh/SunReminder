@@ -26,6 +26,8 @@ struct ContentView: View {
         return formatter
     }()
 
+    private static let backgroundColor = Color(red: 0.04, green: 0.09, blue: 0.22)
+
     var body: some View {
         VStack(spacing: 0) {
             VStack(alignment: .center, spacing: 12) {
@@ -46,6 +48,7 @@ struct ContentView: View {
 
                     if let todaySuggestion {
                         Label("On \(todaySuggestion.onTime.text), off \(todaySuggestion.offTime.text)", systemImage: "clock")
+                            .padding([.top])
                     } else {
                         Label("No change needed", systemImage: "clock")
                             .foregroundStyle(.secondary)
@@ -62,8 +65,12 @@ struct ContentView: View {
                     Spacer()
                     suggestionText(row.suggestion)
                 }
+                .listRowBackground(Self.backgroundColor)
             }
+            .scrollContentBackground(.hidden)
         }
+        .background(Self.backgroundColor.ignoresSafeArea())
+        .preferredColorScheme(.dark)
         .task {
             recompute()
             for await _ in NotificationCenter.default.notifications(named: .NSCalendarDayChanged) {
