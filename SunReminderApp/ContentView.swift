@@ -100,7 +100,7 @@ struct ContentView: View {
 
             var current = TimerState.initial
             var rows: [ForecastRow] = []
-            for i in 1...20 {
+            for i in 1...19 {
                 let date = Calendar.current.date(byAdding: .day, value: i, to: today)!
                 if let suggestion = try Policy.suggestNewTimerState(configuration: .stCrossMede, current: current, now: date) {
                     current = suggestion
