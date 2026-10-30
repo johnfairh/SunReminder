@@ -61,6 +61,30 @@ private extension TimerState {
 }
 
 public enum Policy {
+    /// Today's sunrise/sunset, in local (UK) time, rounded to the nearest quarter hour.
+    public static func sunriseSunset(configuration: Configuration, now: Date) throws -> (sunrise: TimerTime, sunset: TimerTime) {
+        guard let gmtSunrise = SwiftSunriseSunset.sunrise(for: now, in: .gmt,
+                                                          latitude: configuration.latitude,
+                                                          longitude: configuration.longitude) else {
+            throw ReminderError("Backend calculation failed for sunrise")
+        }
+
+        guard let gmtSunset = SwiftSunriseSunset.sunset(for: now, in: .gmt,
+                                                        latitude: configuration.latitude,
+                                                        longitude: configuration.longitude) else {
+            throw ReminderError("Backend calculation failed for sunset")
+        }
+
+        let gmtOffsetHours = ukTimeZone.secondsFromGMT(for: now) / 3600
+        let sunriseGMT = TimerTime(gmtSunrise)
+        let sunsetGMT = TimerTime(gmtSunset)
+
+        return (
+            TimerTime(sunriseGMT.hour + gmtOffsetHours, sunriseGMT.minute),
+            TimerTime(sunsetGMT.hour + gmtOffsetHours, sunsetGMT.minute)
+        )
+    }
+
     public static func suggestNewTimerState(configuration: Configuration, current: TimerState = TimerState.initial, now: Date) throws -> TimerState? {
         guard let gmtSunrise = SwiftSunriseSunset.sunrise(for: now, in: .gmt,
                                                           latitude: configuration.latitude,

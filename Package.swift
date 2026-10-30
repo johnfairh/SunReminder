@@ -5,7 +5,8 @@ import PackageDescription
 let package = Package(
     name: "SunReminder",
     platforms: [
-      .macOS("26.0")
+      .macOS("26.0"),
+      .iOS("26.0")
     ],
     products: [
         .library(
