@@ -28,24 +28,31 @@ struct ContentView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            VStack(alignment: .leading, spacing: 12) {
+            VStack(alignment: .center, spacing: 12) {
                 Text(Self.headerDateFormatter.string(from: today))
-                    .font(.headline)
+                    .font(.title)
+                    .fontWeight(.semibold)
 
                 if let errorMessage {
                     Text(errorMessage)
                         .foregroundStyle(.red)
                 }
 
-                if let sunrise, let sunset {
-                    Label("Sunrise \(sunrise.text)", systemImage: "sunrise")
-                    Label("Sunset \(sunset.text)", systemImage: "sunset")
-                }
+                VStack(alignment: .center) {
+                    if let sunrise, let sunset {
+                        Label("Sunrise \(sunrise.text)", systemImage: "sunrise")
+                        Label("Sunset \(sunset.text)", systemImage: "sunset")
+                    }
 
-                GroupBox("Today") {
-                    suggestionText(todaySuggestion)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    if let todaySuggestion {
+                        Label("On \(todaySuggestion.onTime.text), off \(todaySuggestion.offTime.text)", systemImage: "clock")
+                    } else {
+                        Label("No change needed", systemImage: "clock")
+                            .foregroundStyle(.secondary)
+                    }
                 }
+                .font(.title3)
+                .fontWeight(.medium)
             }
             .padding()
 
@@ -78,9 +85,7 @@ struct ContentView: View {
 
     private func recompute() {
         do {
-            let (sunriseTime, sunsetTime) = try Policy.sunriseSunset(configuration: .stCrossMede, now: today)
-            sunrise = sunriseTime
-            sunset = sunsetTime
+            (sunrise, sunset) = try Policy.sunriseSunset(configuration: .stCrossMede, now: today)
             todaySuggestion = try Policy.suggestNewTimerState(configuration: .stCrossMede, now: today)
 
             var current = TimerState.initial
