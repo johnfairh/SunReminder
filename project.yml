@@ -1,0 +1,29 @@
+name: SunReminder
+
+options:
+  bundleIdPrefix: com.matthewfairhurst
+
+targets:
+  SunReminder:
+    type: application
+    platform: iOS
+    deploymentTarget: "27.0"
+    sources:
+      - SunReminderApp
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.matthewfairhurst.SunReminder
+        DEVELOPMENT_TEAM: D243YH28Y6
+        CODE_SIGN_STYLE: Automatic
+        SWIFT_VERSION: "6.0"
+        TARGETED_DEVICE_FAMILY: "1"          # iPhone only
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: UIInterfaceOrientationPortrait
+    dependencies:
+      - package: SwiftSunriseSunset
+
+packages:
+  SwiftSunriseSunset:
+    url: https://github.com/johnfairh/swift-sunrise-sunset.git
+    from: 1.0.0

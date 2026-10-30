@@ -15,7 +15,7 @@ Designed only for the UK in the 21st century; not the software's job to police t
 
 ## Project structure
 
-`SunReminder.xcodeproj` / `SunReminderApp/` is the whole repo — a single iOS app target
+`project.yml` / `SunReminderApp/` is the whole repo — a single iOS app target
 (iOS 27+ deployment target). It uses Xcode's file-system-synchronized group, so any
 `.swift` file dropped into `SunReminderApp/` is picked up automatically — no explicit
 project-file registration needed.
@@ -48,20 +48,14 @@ Timer times are stored *local*; policy calculations happen in **GMT**:
 
 Compare times only within a single time zone — `TimerTime.difference(to:)` assumes this.
 
+## Project file
+
+`project.yml` is an xcodegen file.  Do not change `SunReminder.xcodeproj` directly,
+instead modify `project.yml` and regenerate `SunReminder.xcodeproj` using `xcodegen generate`.
+
 ## Commands
 
-There's no SwiftPM package here — build/run/test via Xcode (or `xcodebuild`) targeting
-the `SunReminder` scheme/app target in `SunReminder.xcodeproj`.
+`xcodegen generate` to update the Xcode project file `SunReminder.xcodeproj`.
 
-## Known tooling gotchas in this environment
-
-Via the Xcode MCP integration used in this environment, two operations reliably crash
-or hang Xcode on this project — avoid them:
-- `XcodeNewTarget` against this workspace.
-- The device-interaction / screenshot verification workflow
-  (`DeviceInteractionStartWorkspaceSession` → `DeviceInteractionInstallAndRun` → device
-  event synthesis).
-
-Prefer `BuildProject` + `XcodeRefreshCodeIssuesInFile` for verification, and ask the
-user to visually check the running app themselves. If a new target/project is ever
-needed, have the user create it manually via Xcode's UI rather than via `XcodeNewTarget`.
+Build/run/test via Xcode (or `xcodebuild`) targeting the `SunReminder` scheme/app
+target in `SunReminder.xcodeproj`.
