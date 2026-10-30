@@ -35,9 +35,9 @@ project-file registration needed.
 
 Nothing is persisted: the app never assumes the timer's real current setting because it
 is a physical device that can change due to humans or electrical supply outages. Today's
-suggestion is computed against `TimerState.initial` (on 21:00, off 06:00, GMT), and the
-20-day forecast chains from `.initial`, feeding each day's suggestion in as the next
-day's `current`.
+suggestion is computed against `TimerState.initial` (on 21:00, off 06:00, GMT). The
+20-day forecast starts from today's suggestion (or `.initial` if there is none), feeding
+each day's suggestion in as the next day's `current`.
 
 Depends directly on the `SwiftSunriseSunset` package
 (`johnfairh/swift-sunrise-sunset`) as a package dependency on the app target.

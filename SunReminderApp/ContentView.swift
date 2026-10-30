@@ -98,7 +98,7 @@ struct ContentView: View {
             (sunrise, sunset) = try Policy.sunriseSunset(configuration: .stCrossMede, now: today)
             todaySuggestion = try Policy.suggestNewTimerState(configuration: .stCrossMede, now: today)
 
-            var current = TimerState.initial
+            var current = todaySuggestion ?? TimerState.initial
             var rows: [ForecastRow] = []
             for i in 1...19 {
                 let date = Calendar.current.date(byAdding: .day, value: i, to: today)!
