@@ -33,7 +33,8 @@ project-file registration needed.
   `.primary`/`.secondary` to auto-adapt to white/light-gray rather than hardcoding
   foreground colors. Recomputes on launch and at midnight (`.NSCalendarDayChanged`).
 
-Nothing is persisted: the app never knows the timer's real current setting. Today's
+Nothing is persisted: the app never assumes the timer's real current setting because it
+is a physical device that can change due to humans or electrical supply outages. Today's
 suggestion is computed against `TimerState.initial` (on 21:00, off 06:00, GMT), and the
 20-day forecast chains from `.initial`, feeding each day's suggestion in as the next
 day's `current`.

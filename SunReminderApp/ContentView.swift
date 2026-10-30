@@ -65,8 +65,11 @@ struct ContentView: View {
                     Spacer()
                     suggestionText(row.suggestion)
                 }
+                .font(.subheadline)
+                .listRowInsets(.vertical, 6)
                 .listRowBackground(Self.backgroundColor)
             }
+            .environment(\.defaultMinListRowHeight, 30)
             .scrollContentBackground(.hidden)
         }
         .background(Self.backgroundColor.ignoresSafeArea())
