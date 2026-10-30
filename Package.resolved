@@ -1,0 +1,15 @@
+{
+  "originHash" : "ca3a90fb3889775a7ee6333f0095de66313deb0eba9d23c2c9ff9047b927ea14",
+  "pins" : [
+    {
+      "identity" : "swift-sunrise-sunset",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/johnfairh/swift-sunrise-sunset.git",
+      "state" : {
+        "revision" : "c1c8d064fc7559de21d4965564155a2eea9c4769",
+        "version" : "1.0.0"
+      }
+    }
+  ],
+  "version" : 3
+}
