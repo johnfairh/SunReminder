@@ -1,5 +1,5 @@
 //
-//  Suggestion.swift
+//  Policy.swift
 //  SunReminder
 //
 //  Created by John on 11/03/2026.
