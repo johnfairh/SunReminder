@@ -81,7 +81,7 @@ struct ContentView: View {
             .environment(\.defaultMinListRowHeight, 30)
             .scrollContentBackground(.hidden)
         }
-        .alert("Add calendar reminder?",
+        .alert("Add reminder?",
                isPresented: Binding(get: { pendingReminderDate != nil },
                                     set: { if !$0 { pendingReminderDate = nil } }),
                presenting: pendingReminderDate) { date in
