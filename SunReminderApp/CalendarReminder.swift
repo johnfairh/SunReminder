@@ -25,6 +25,7 @@ enum CalendarReminder {
         event.startDate = start
         event.endDate = start.addingTimeInterval(15 * 60)
         event.calendar = calendar
+        event.url = URL(string: "sunreminder://open")
         event.addAlarm(EKAlarm(relativeOffset: 0))
         try store.save(event, span: .thisEvent)
     }

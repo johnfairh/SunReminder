@@ -21,6 +21,7 @@
 		1805F0583755B0D0B5F15543 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2722EDE3FCBDE71CBB3C1964 /* CalendarReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarReminder.swift; sourceTree = "<group>"; };
 		A71AC78F65428757BCFE7697 /* SunReminder.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = SunReminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA3D8E6D3D5DB6DCABA716FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CE48EBBF9F5EBB69EEEA47D2 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = wrapper.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 		D4FF39574457AFF9FCAB43DC /* MyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyApp.swift; sourceTree = "<group>"; };
 		D80080C55E869C886B8961E3 /* Policy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Policy.swift; sourceTree = "<group>"; };
@@ -55,6 +56,7 @@
 				1805F0583755B0D0B5F15543 /* Assets.xcassets */,
 				2722EDE3FCBDE71CBB3C1964 /* CalendarReminder.swift */,
 				F211D2B669A3537D5930BACC /* ContentView.swift */,
+				CA3D8E6D3D5DB6DCABA716FC /* Info.plist */,
 				F78F1ACC73A63711FF17A3E5 /* Model.swift */,
 				D4FF39574457AFF9FCAB43DC /* MyApp.swift */,
 				D80080C55E869C886B8961E3 /* Policy.swift */,
@@ -166,6 +168,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D243YH28Y6;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SunReminderApp/Info.plist;
 				INFOPLIST_KEY_NSCalendarsWriteOnlyAccessUsageDescription = "SunReminder adds a reminder to your calendar for days when the light timer needs resetting.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
@@ -189,6 +192,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D243YH28Y6;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SunReminderApp/Info.plist;
 				INFOPLIST_KEY_NSCalendarsWriteOnlyAccessUsageDescription = "SunReminder adds a reminder to your calendar for days when the light timer needs resetting.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
