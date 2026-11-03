@@ -7,6 +7,7 @@ struct ForecastRow: Identifiable {
 }
 
 struct ContentView: View {
+    @Environment(\.scenePhase) private var scenePhase
     @State private var today: Date = .now
     @State private var sunrise: ClockTime?
     @State private var sunset: ClockTime?
@@ -111,6 +112,13 @@ struct ContentView: View {
         .task {
             recompute()
             for await _ in NotificationCenter.default.notifications(named: .NSCalendarDayChanged) {
+                today = .now
+                recompute()
+            }
+        }
+        .onChange(of: scenePhase) { _, phase in
+            // Unclear whether .NSCalendarDayChanged is delivered after a suspension
+            if phase == .active {
                 today = .now
                 recompute()
             }

@@ -35,7 +35,9 @@ plist.
   suggestion as `Label`s, a scrollable list of the next 20 days. Forces
   `.preferredColorScheme(.dark)` with a custom dark-navy `backgroundColor`, relying on
   `.primary`/`.secondary` to auto-adapt to white/light-gray rather than hardcoding
-  foreground colors. Recomputes on launch and at midnight (`.NSCalendarDayChanged`).
+  foreground colors. Recomputes on launch, at midnight (`.NSCalendarDayChanged`), and
+  whenever the scene becomes active (in case the midnight notification was missed while
+  suspended).
   Tapping a forecast row that shows a change offers (via a confirmation alert) to add a
   calendar reminder for that date; "No change needed" rows ignore taps.
 - `CalendarReminder.swift` — `CalendarReminder.add(on:)` adds a non-repeating
