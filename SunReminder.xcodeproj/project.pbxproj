@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		017335DE6AC71610FDA6B960 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = CE48EBBF9F5EBB69EEEA47D2 /* AppIcon.icon */; };
 		0A9BAE2DE96D5FAD2366BC95 /* MyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FF39574457AFF9FCAB43DC /* MyApp.swift */; };
 		2B0C77836F97F3D0C7F8AB7F /* Policy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80080C55E869C886B8961E3 /* Policy.swift */; };
 		32B3C464382D0468D4F6A28A /* SwiftSunriseSunset in Frameworks */ = {isa = PBXBuildFile; productRef = 60869829A2B2D1BF8B2D3779 /* SwiftSunriseSunset */; };
@@ -18,6 +19,7 @@
 /* Begin PBXFileReference section */
 		1805F0583755B0D0B5F15543 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A71AC78F65428757BCFE7697 /* SunReminder.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = SunReminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE48EBBF9F5EBB69EEEA47D2 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = wrapper.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 		D4FF39574457AFF9FCAB43DC /* MyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyApp.swift; sourceTree = "<group>"; };
 		D80080C55E869C886B8961E3 /* Policy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Policy.swift; sourceTree = "<group>"; };
 		F211D2B669A3537D5930BACC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -39,6 +41,7 @@
 		1A9CA9023DA1EBE9CC885B2D = {
 			isa = PBXGroup;
 			children = (
+				CE48EBBF9F5EBB69EEEA47D2 /* AppIcon.icon */,
 				5310443091F385E22BE59E45 /* SunReminderApp */,
 				A9951096A3C2A225F02AC643 /* Products */,
 			);
@@ -129,6 +132,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				017335DE6AC71610FDA6B960 /* AppIcon.icon in Resources */,
 				A0CFF8E94A7FDCC9F84066D1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

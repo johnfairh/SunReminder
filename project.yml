@@ -2,6 +2,9 @@ name: SunReminder
 
 options:
   bundleIdPrefix: com.matthewfairhurst
+  fileTypes:
+    "icon":
+      file: true
 
 targets:
   SunReminder:
@@ -10,6 +13,7 @@ targets:
     deploymentTarget: "27.0"
     sources:
       - SunReminderApp
+      - AppIcon.icon
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.matthewfairhurst.SunReminder

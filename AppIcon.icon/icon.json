@@ -1,0 +1,46 @@
+{
+  "fill" : "automatic",
+  "groups" : [
+    {
+      "layers" : [
+        {
+          "image-name" : "SunHelper_MarksLayer.svg",
+          "name" : "SunHelper_MarksLayer",
+          "position" : {
+            "scale" : 1,
+            "translation-in-points" : [
+              -132,
+              -142
+            ]
+          }
+        },
+        {
+          "image-name" : "SunHelper_PipsLayer.svg",
+          "name" : "SunHelper_PipsLayer"
+        },
+        {
+          "image-name" : "SunHelper_RimLayer.svg",
+          "name" : "SunHelper_RimLayer"
+        },
+        {
+          "image-name" : "SunHelper_FaceLayer.svg",
+          "name" : "SunHelper_FaceLayer"
+        }
+      ],
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.3
+      }
+    }
+  ],
+  "supported-platforms" : {
+    "circles" : [
+      "watchOS"
+    ],
+    "squares" : "shared"
+  }
+}
