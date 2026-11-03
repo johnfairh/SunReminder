@@ -14,7 +14,7 @@ struct ContentView: View {
     @State private var forecast: [ForecastRow] = []
     @State private var errorMessage: String?
     @State private var pendingReminderDate: Date?
-    @State private var reminderResult: String?
+    @State private var reminderError: String?
 
     private static let headerDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -89,9 +89,8 @@ struct ContentView: View {
                 Task {
                     do {
                         try await CalendarReminder.add(on: date)
-                        reminderResult = "Reminder added"
                     } catch {
-                        reminderResult = "\(error)"
+                        reminderError = (error as? ReminderError)?.reason ?? error.localizedDescription
                     }
                 }
             }
@@ -99,10 +98,13 @@ struct ContentView: View {
         } message: { date in
             Text("8:25 AM on \(Self.rowDateFormatter.string(from: date))")
         }
-        .alert(reminderResult ?? "",
-               isPresented: Binding(get: { reminderResult != nil },
-                                    set: { if !$0 { reminderResult = nil } })) {
+        .alert("Couldn't add reminder",
+               isPresented: Binding(get: { reminderError != nil },
+                                    set: { if !$0 { reminderError = nil } }),
+               presenting: reminderError) { _ in
             Button("OK") {}
+        } message: { reminderError in
+            Text(reminderError)
         }
         .background(Self.backgroundColor.ignoresSafeArea())
         .preferredColorScheme(.dark)
