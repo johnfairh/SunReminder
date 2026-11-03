@@ -32,6 +32,11 @@ project-file registration needed.
   `.preferredColorScheme(.dark)` with a custom dark-navy `backgroundColor`, relying on
   `.primary`/`.secondary` to auto-adapt to white/light-gray rather than hardcoding
   foreground colors. Recomputes on launch and at midnight (`.NSCalendarDayChanged`).
+  Tapping a forecast row that shows a change offers (via a confirmation alert) to add a
+  calendar reminder for that date; "No change needed" rows ignore taps.
+- `CalendarReminder.swift` — `CalendarReminder.add(on:)` adds a non-repeating
+  "Check SunReminder" event at 08:25 local time, alerting at event time, using EventKit
+  with write-only calendar access (usage string set in `project.yml`).
 
 Nothing is persisted: the app never assumes the timer's real current setting because it
 is a physical device that can change due to humans or electrical supply outages. Today's

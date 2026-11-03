@@ -24,6 +24,7 @@ targets:
         GENERATE_INFOPLIST_FILE: YES
         INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
         INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: UIInterfaceOrientationPortrait
+        INFOPLIST_KEY_NSCalendarsWriteOnlyAccessUsageDescription: "SunReminder adds a reminder to your calendar for days when the light timer needs resetting."
     dependencies:
       - package: SwiftSunriseSunset
 

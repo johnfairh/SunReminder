@@ -13,6 +13,8 @@ struct ContentView: View {
     @State private var todaySuggestion: TimerState?
     @State private var forecast: [ForecastRow] = []
     @State private var errorMessage: String?
+    @State private var pendingReminderDate: Date?
+    @State private var reminderResult: String?
 
     private static let headerDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -66,11 +68,41 @@ struct ContentView: View {
                     suggestionText(row.suggestion)
                 }
                 .font(.subheadline)
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    if row.suggestion != nil {
+                        pendingReminderDate = row.date
+                    }
+                }
+                .accessibilityAddTraits(row.suggestion != nil ? .isButton : [])
                 .listRowInsets(.vertical, 6)
                 .listRowBackground(Self.backgroundColor)
             }
             .environment(\.defaultMinListRowHeight, 30)
             .scrollContentBackground(.hidden)
+        }
+        .alert("Add calendar reminder?",
+               isPresented: Binding(get: { pendingReminderDate != nil },
+                                    set: { if !$0 { pendingReminderDate = nil } }),
+               presenting: pendingReminderDate) { date in
+            Button("Add") {
+                Task {
+                    do {
+                        try await CalendarReminder.add(on: date)
+                        reminderResult = "Reminder added"
+                    } catch {
+                        reminderResult = "\(error)"
+                    }
+                }
+            }
+            Button("Cancel", role: .cancel) {}
+        } message: { date in
+            Text("8:25 AM on \(Self.rowDateFormatter.string(from: date))")
+        }
+        .alert(reminderResult ?? "",
+               isPresented: Binding(get: { reminderResult != nil },
+                                    set: { if !$0 { reminderResult = nil } })) {
+            Button("OK") {}
         }
         .background(Self.backgroundColor.ignoresSafeArea())
         .preferredColorScheme(.dark)
